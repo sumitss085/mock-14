@@ -6,14 +6,20 @@ const Usermodel = require("../Model/User.Model");
 require("dotenv").config();
 
 Userrouter.post("/register", async (req, res) => {
-  const {  email,  } = req.body;
+  const { name, gender, dob, email, mobile, initialBalnce, adharNo, panNo } =
+    req.body;
 
   try {
     const user = new Usermodel({
-       
-        email,
-        
-      });
+      Name: name,
+      Gender: gender,
+      DOB: dob,
+      Email: email,
+      Mobile: mobile,
+      initialBalnce: initialBalnce,
+      AdharNo: adharNo,
+      PanNo: panNo,
+    });
       await user.save();
       res.send({ msg: "user register succesfully" });
   } catch (error) {
